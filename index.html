@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Music-player --benigining</title>
+
+    <!-- fontawesome 5 -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+
+    <!-- custom styles -->
+    <link
+        href="./css/style.css"
+        rel="stylesheet"
+        type="text/css"
+    />
+</head>
+
+<body>
+
+    <div id="player" class="player">
+
+        <!-- music list -->
+        <button type="button" id="listtogglebtn" class="player__btn player__btn--list-toggle">
+            <span><i id="toggleicon" class="fas fa-bars"></i></span>
+        </button>
+        <ul id="playlist" class="player__list">
+           <h4>Playlist</h4>
+        </ul>
+        <!-- music list -->
+
+        <!-- music image area -->
+        <figure >
+            <div class="player__img-container">
+                <img src="./assets/unstoppable.jfif" id="coverimg" class="player__img" alt="nights" />
+            </div>
+            <figcaption class="player__img-title">
+                <h1 id="title" class="player__title">Unstoppable</h1>
+                <span id="singer" class="player__txt">Sia</span>
+            </figcaption>
+        </figure>
+        <!-- music image area -->
+
+
+        <!-- music progress bar area -->
+        <div class="player__container">
+            <div id="progressbar" class="player__progress-bar">
+                <div id="progress" class="player__progress"></div>
+            </div>
+            <div class="player__time">
+                <span id="current">0:00</span>
+                <span id="end">4:30</span>
+            </div>
+        </div>
+        <!-- music progress bar area -->
+
+        <!-- music option/control area -->
+        <div class="player__controls">
+            <button type="button" id="backwardbtn" class="player__btn">
+                <span><i class="fas fa-backward"></i></span>
+            </button>
+            <button type="button" id="playbtn" class="player__btn player__btn--play">
+                <span><i class="fas fa-play"></i></span>
+            </button>
+            <button type="button" id="forwardbtn" class="player__btn">
+                <span><i class="fas fa-forward"></i></span>
+            </button>
+        </div>
+        <!-- music option/control area -->
+
+        <audio id="emptyaudio"></audio>
+        <audio src="./assets/unstoppable.mp3" class="player__audio"></audio>
+        <audio src="./assets/thenights.mp3" class="player__audio"></audio>
+        <audio src="./assets/crown.mp3" class="player__audio"></audio>
+
+        <!-- color palette area -->
+        <button type="button" id="themebtn" class="player__btn player__btn--theme">
+            <div title="blue" class="player__box player__box--blue"></div>
+            <div title="green" class="player__box player__box--green"></div>
+            <div title="yellow" class="player__box player__box--yellow"></div>
+            <div title="purple" class="player__box player__box--purple"></div>
+            <div title="pink" class="player__box player__box--pink"></div>
+            <img src="./assets/paint-palette-svgrepo-com.svg" alt="paint-palette" />
+        </button>
+        <!-- color palette area -->
+    </div>
+
+
+
+    <script
+        src="./js/app.js"
+        type="text/javascript"
+    ></script>
+</body>
+
+</html>

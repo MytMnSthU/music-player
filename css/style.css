@@ -1,0 +1,246 @@
+*{
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+    /* outline: 1px solid green; */
+}
+
+:root{
+    --clr-txt:rgb(255, 255, 255);
+    --clr-bg:#222;
+    --clr-bg-secondary:#d9d9d9;
+    --clr-acc:rgb(255, 0, 111);
+}
+
+body{
+    font-family: sans-serif;
+    min-height: 100vh;
+    background-color: var(--clr-bg);
+}
+
+.player{
+    width: 100%;
+    max-width: 350px;
+    min-height: 100vh;
+    color: var(--clr-txt);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+
+    padding: 1em;
+    margin: 0 auto;
+
+}
+
+.player__img-container{
+    width: 100%;
+    max-width: 250px;
+}
+
+.player__img{
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    position: relative;
+}
+
+.player__img--sm{
+    width: 20%;
+}
+
+
+
+.player__img-title{
+    text-align: center;
+    padding: 1em;
+}
+.player__title{
+    font-size: 1.5rem;
+    padding-bottom: 0.3em;
+}
+
+.player__container{
+    width: 100%;
+}
+.player__progress-bar{
+    width: 100%;
+    /* height: 10px; */
+    background-color: var(--clr-bg-secondary);
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+    padding: 4px;
+    overflow: hidden;
+}
+
+.player__progress{
+    width: 0%;
+    height: 100%;
+    background-color: var(--clr-acc);
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 500px;
+    transition: all cubic-bezier(0.77, 0, 0.175, 1) 0.3s;
+}
+
+.player__time{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 0;
+}
+
+.player__controls{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    text-align: center;
+}
+
+.player__btn{
+    all: unset;
+    width: 30px;
+    height: 30px;
+    color: var(--clr-txt);
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.player__btn:hover{
+    background-color: var(--clr-bg);
+    filter: brightness(0.9);
+}
+
+.player__btn--play {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    color: var(--clr-acc);
+}
+
+.player__btn--theme{
+    height: auto;
+    background-color: #444;
+    border: 2px solid #222;
+    border-radius: 10px;
+    padding: 7px;
+    opacity: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    position: fixed;
+    right: 10px;
+    bottom: 20px;
+
+    transition: all 0.3s;
+}
+
+.player__box{
+    width: 100%;
+    height: 0px;
+    background-color: #fff;
+    border-radius: 3px;
+    position: absolute;
+    transition: none;
+}
+
+.player__box--blue{
+    background-color: #00CCFF;
+}
+.player__box--green{
+    background-color: #00FFCC;
+}
+.player__box--yellow{
+    background-color: #FFFF00;
+}
+.player__box--pink{
+    background-color: #FF00CC;
+}
+.player__box--purple{
+    background-color: #CC00FF;
+}
+
+.player__btn--theme.open .player__box{
+    position: relative;
+    height: 30px;
+    transition: all 0.3s ease-out;
+}
+
+.player__box:hover{
+    scale: 1.5;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.7);
+    z-index: 99;
+}
+
+.player__list{
+    width: 100%;
+    max-width: 350px;
+    background-color: #333;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 20px 10px 10px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    position: absolute;
+    left: 10px;
+    top: 75px;
+
+    opacity: 0;
+    translate: 0 50%;
+    z-index: -99;
+    transition: none;
+    transform-origin: top;
+}
+
+.player__list.toggle{
+    opacity: 1;
+    translate: 0 0;
+    transition: all ease 0.5s;
+    z-index: 99;
+}
+
+.player__list-item{
+    background-color: #444;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.player__list-item:hover{
+    filter: brightness(0.9);
+}
+
+.player__list-title{
+    font-size: 1.2rem;
+}
+.player__list-duration{
+    display: inline-block;
+    margin-left: auto;
+}
+
+.player__btn--list-toggle{
+    background-color: #444;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
