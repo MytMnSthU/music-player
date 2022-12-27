@@ -150,7 +150,11 @@
       ado.addEventListener("loadeddata", () => {
          const duration = getDurationWithFormat(Math.floor(ado.duration));
          li.innerHTML = `
-            <img src="./assets/${music.imgurl}.jpg" class="player__img player__img--sm" alt=${music.title} />
+            <img
+               src="./assets/${music.imgurl}.jpg"
+               class="player__img player__img--sm"
+               alt=${music.title}
+            />
             <div>
                <h2 class="player__list-title">${music.title}</h2>
                <span class="player__list-txt">${music.singer}</span>
@@ -178,4 +182,11 @@
          changeIcon();
       });
    });
+
+   audio.addEventListener('ended', () => {  
+      progress.style.width = 0;
+      isPlay = false;
+      changeIcon();
+      nextMusic();
+   })
 })();
