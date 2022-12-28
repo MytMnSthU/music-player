@@ -19,7 +19,8 @@
    const toggleicon = document.getElementById("toggleicon");
    const darktogglebtn = document.getElementById("darkbtn");
    const darktoggleicon = document.getElementById("darktoggleicon");
-   const root = document.querySelector(':root');
+   const root = document.querySelector(":root");
+   const playbars = document.querySelectorAll(".player__bar");
 
    const MUSIC_DATA = [
       {
@@ -76,6 +77,15 @@
       loadMusic(MUSIC_DATA[currentIdx]);
       isPlay = false;
       changeIcon();
+      if (isPlay) {
+         playbars.forEach((playbar) => {
+            playbar.classList.add("playing-effect");
+         });
+      } else {
+         playbars.forEach((playbar) => {
+            playbar.classList.remove("playing-effect");
+         });
+      }
    }
 
    function prevMusic() {
@@ -86,6 +96,15 @@
       loadMusic(MUSIC_DATA[currentIdx]);
       isPlay = false;
       changeIcon();
+      if (isPlay) {
+         playbars.forEach((playbar) => {
+            playbar.classList.add("playing-effect");
+         });
+      } else {
+         playbars.forEach((playbar) => {
+            playbar.classList.remove("playing-effect");
+         });
+      }
    }
 
    function getDurationWithFormat(customDuration) {
@@ -97,6 +116,15 @@
    playbtn.addEventListener("click", () => {
       playMusic();
       changeIcon();
+      if (isPlay) {
+         playbars.forEach((playbar) => {
+            playbar.classList.add("playing-effect");
+         });
+      } else {
+         playbars.forEach((playbar) => {
+            playbar.classList.remove("playing-effect");
+         });
+      }
    });
 
    nextbtn.addEventListener("click", nextMusic);
@@ -184,6 +212,15 @@
          toggleicon.classList.toggle("fa-times");
          isPlay = false;
          changeIcon();
+         if (isPlay) {
+            playbars.forEach((playbar) => {
+               playbar.classList.add("playing-effect");
+            });
+         } else {
+            playbars.forEach((playbar) => {
+               playbar.classList.remove("playing-effect");
+            });
+         }
       });
    });
 
@@ -195,7 +232,7 @@
    });
 
    darktogglebtn.addEventListener("click", () => {
-      root.classList.toggle('dark-mode');
+      root.classList.toggle("dark-mode");
       if (darkMode) {
          darktoggleicon.classList.replace("fa-sun", "fa-moon");
       } else {
