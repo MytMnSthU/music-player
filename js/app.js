@@ -17,6 +17,9 @@
    const playlist = document.getElementById("playlist");
    const listtogglebtn = document.getElementById("listtogglebtn");
    const toggleicon = document.getElementById("toggleicon");
+   const darktogglebtn = document.getElementById("darkbtn");
+   const darktoggleicon = document.getElementById("darktoggleicon");
+   const root = document.querySelector(':root');
 
    const MUSIC_DATA = [
       {
@@ -43,6 +46,7 @@
    let isPlay = false;
    let duration = 0;
    let playlistitems;
+   let darkMode = true;
 
    loadMusic(MUSIC_DATA[currentIdx]);
 
@@ -183,10 +187,21 @@
       });
    });
 
-   audio.addEventListener('ended', () => {  
+   audio.addEventListener("ended", () => {
       progress.style.width = 0;
       isPlay = false;
       changeIcon();
       nextMusic();
-   })
+   });
+
+   darktogglebtn.addEventListener("click", () => {
+      root.classList.toggle('dark-mode');
+      if (darkMode) {
+         darktoggleicon.classList.replace("fa-sun", "fa-moon");
+      } else {
+         darktoggleicon.classList.replace("fa-moon", "fa-sun");
+      }
+
+      darkMode = !darkMode;
+   });
 })();
