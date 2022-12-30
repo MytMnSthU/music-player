@@ -41,9 +41,13 @@ async function getLrcFiles(pathname) {
       });
     //   log(formatcontent);
 
-      lrcfiles.forEach((file, idx) => {
-         LYRIC_DATA.push({ [file]: formatcontent[idx] });
-      });
+      // lrcfiles.forEach((file, idx) => {
+      //    LYRIC_DATA.push({ [file]: formatcontent[idx] });
+      // });
+
+      for (let i = lrcfiles.length-1; i >= 0; i--) {
+         LYRIC_DATA.push({ [lrcfiles[i]]: formatcontent[i] });
+      }
 
     //   log(LYRIC_DATA);
 

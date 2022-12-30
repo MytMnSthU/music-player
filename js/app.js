@@ -21,6 +21,8 @@
    const darktoggleicon = document.getElementById("darktoggleicon");
    const root = document.querySelector(":root");
    const playbars = document.querySelectorAll(".player__bar");
+   const lyrictogglebtn = document.getElementById("lyrictogglebtn");
+   const lyricelm = document.getElementById("lyric");
 
    const MUSIC_DATA = [
       {
@@ -75,6 +77,8 @@
          currentIdx = 0;
       }
       loadMusic(MUSIC_DATA[currentIdx]);
+      loadLyric(currentIdx);
+
       isPlay = false;
       changeIcon();
       if (isPlay) {
@@ -94,6 +98,8 @@
          currentIdx = MUSIC_DATA.length - 1;
       }
       loadMusic(MUSIC_DATA[currentIdx]);
+      loadLyric(currentIdx);
+
       isPlay = false;
       changeIcon();
       if (isPlay) {
@@ -112,6 +118,23 @@
       let endsec = (customDuration || duration) % 60;
       return endmin + ":" + (endsec <= 9 ? "0" + endsec : endsec);
    }
+
+   loadLyric(currentIdx);
+   async function loadLyric(idx) {
+      const lyrics = await fetch('/js/data.json');
+      const lyricjson = await lyrics.json();
+      const lyricsentences = lyricjson[idx][MUSIC_DATA[idx].songurl + '.lrc'];
+      lyricelm.innerHTML = '';
+      lyricsentences.forEach((s) => {  
+         const span = document.createElement('span');
+         span.className = "lyric__txt";
+         span.textContent = s;
+         lyricelm.appendChild(span);
+      })
+      
+   }
+
+
 
    playbtn.addEventListener("click", () => {
       playMusic();
@@ -208,6 +231,7 @@
       itm.addEventListener("click", () => {
          currentIdx = idx;
          loadMusic(MUSIC_DATA[currentIdx]);
+         loadLyric(currentIdx);
          playlist.classList.toggle("toggle");
          toggleicon.classList.toggle("fa-times");
          isPlay = false;
@@ -241,4 +265,9 @@
 
       darkMode = !darkMode;
    });
+
+   lyrictogglebtn.addEventListener('click', () => { 
+      lyrictogglebtn.classList.toggle('focus');
+      lyricelm.classList.toggle("lyric-toggle");
+    })
 })();
