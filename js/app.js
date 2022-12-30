@@ -23,6 +23,7 @@
    const playbars = document.querySelectorAll(".player__bar");
    const lyrictogglebtn = document.getElementById("lyrictogglebtn");
    const lyricelm = document.getElementById("lyric");
+   const lyricclosebtn = document.getElementById("lyricclosebtn");
 
    const MUSIC_DATA = [
       {
@@ -121,20 +122,17 @@
 
    loadLyric(currentIdx);
    async function loadLyric(idx) {
-      const lyrics = await fetch('/js/data.json');
+      const lyrics = await fetch("/js/data.json");
       const lyricjson = await lyrics.json();
-      const lyricsentences = lyricjson[idx][MUSIC_DATA[idx].songurl + '.lrc'];
-      lyricelm.innerHTML = '';
-      lyricsentences.forEach((s) => {  
-         const span = document.createElement('span');
+      const lyricsentences = lyricjson[idx][MUSIC_DATA[idx].songurl + ".lrc"];
+      lyricelm.innerHTML = "";
+      lyricsentences.forEach((s) => {
+         const span = document.createElement("span");
          span.className = "lyric__txt";
          span.textContent = s;
          lyricelm.appendChild(span);
-      })
-      
+      });
    }
-
-
 
    playbtn.addEventListener("click", () => {
       playMusic();
@@ -266,8 +264,22 @@
       darkMode = !darkMode;
    });
 
-   lyrictogglebtn.addEventListener('click', () => { 
-      lyrictogglebtn.classList.toggle('focus');
-      lyricelm.classList.toggle("lyric-toggle");
-    })
+   lyrictogglebtn.addEventListener("click", () => {
+      const desktopsize = 900;
+      const screensize = window.innerWidth;
+      lyrictogglebtn.classList.toggle("focus");
+      console.log(screensize);
+      if (screensize < desktopsize) {
+         lyricelm.classList.toggle("lyric-toggle-mobile");
+         lyricclosebtn.classList.toggle("show");
+      } else {
+         lyricelm.classList.toggle("lyric-toggle");
+      }
+   });
+
+   lyricclosebtn.addEventListener("click", () => {
+      lyricelm.classList.toggle("lyric-toggle-mobile");
+      lyricclosebtn.classList.toggle("show");
+      lyrictogglebtn.classList.toggle("focus");
+   });
 })();
