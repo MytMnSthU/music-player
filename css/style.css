@@ -200,6 +200,10 @@ body {
     display: block;
 }
 
+#shufflebtn{
+    visibility: hidden;
+}
+
 .player__icon-music {
     background-color: var(--clr-bg-base);
     padding: 1px;
