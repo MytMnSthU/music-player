@@ -122,7 +122,7 @@
 
    loadLyric(currentIdx);
    async function loadLyric(idx) {
-      const lyrics = await fetch("../js/data.json");
+      const lyrics = await fetch("./js/data.json");
       const lyricjson = await lyrics.json();
       const lyricsentences = lyricjson[idx][MUSIC_DATA[idx].songurl + ".lrc"];
       lyricelm.innerHTML = "";
